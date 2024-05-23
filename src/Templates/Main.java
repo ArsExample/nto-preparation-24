@@ -13,7 +13,7 @@ public class Main extends Application {
 
     @SneakyThrows
     public void start(Stage stage)  {
-        Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("../FXMLs/main.fxml"));
         stage.setTitle("Purchase Order Creator");
         stage.setScene(new Scene(root, 700, 480));
         stage.show();
