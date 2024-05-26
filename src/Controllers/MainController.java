@@ -1,11 +1,11 @@
 package Controllers;
 
-import javafx.fxml.FXML;
-
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 
 public class MainController {
+
     @FXML
     private ResourceBundle resources;
 
@@ -16,4 +16,5 @@ public class MainController {
     void initialize() {
 
     }
+
 }
