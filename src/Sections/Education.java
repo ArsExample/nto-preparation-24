@@ -2,15 +2,19 @@ package Sections;
 
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+@Table(name="Education")
 
 @Entity
-@Table(name="Education")
 @Data
+@NoArgsConstructor
 public class Education {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     int id;
+
+    String a;
 }

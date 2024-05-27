@@ -1,5 +1,6 @@
 package Templates;
 
+import Sections.Education;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -9,6 +10,10 @@ import lombok.SneakyThrows;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
+import org.hibernate.boot.Metadata;
+import org.hibernate.boot.MetadataSources;
+import org.hibernate.boot.registry.StandardServiceRegistry;
+import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 
 public class Main extends Application {
@@ -24,16 +29,22 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
-        SessionFactory  seessionFactory = new Configuration().configure("hibernare.cfg.xml").buildSessionFactory();
+//        launch(args);
+        StandardServiceRegistry registry = new StandardServiceRegistryBuilder().configure("hibernare.cfg.xml").build();
+        Metadata data = new MetadataSources(registry).getMetadataBuilder().build();
 
-        Session session = seessionFactory.openSession();
-        Transaction transaction =  session.beginTransaction();
+        SessionFactory sessionFactory = data.getSessionFactoryBuilder().build();
+        Session session = sessionFactory.openSession();
 
+        Transaction transaction = session.beginTransaction();
+        Education ed = new Education();
+        ed.setA("asdasd");
+
+        session.save(ed);
         transaction.commit();
-        session.close();
-        seessionFactory.close();
 
+        sessionFactory.close();
+        session.close();
 
 
     }
